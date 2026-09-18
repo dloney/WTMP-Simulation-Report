@@ -6,9 +6,13 @@ dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
 
     repositories {
-        // Route only specific artifacts to GitHub Packages
+        // Route only specific artifacts to GitHub Packages (or, for local development,
+        // to the local Maven cache populated by `./gradlew publishToMavenLocal` in a
+        // local Action-Panel checkout). mavenLocal() is listed first so a locally
+        // published build takes precedence over GitHub Packages when both are present.
         exclusiveContent {
-            forRepository {
+            forRepositories(
+                mavenLocal(),
                 maven {
                     name = 'GitHubPackages'
                     url = uri('https://maven.pkg.github.com/doi-bor/WTMP-Action-Panel')
@@ -17,7 +21,7 @@ dependencyResolutionManagement {
                         password = System.getenv("GITHUB_TOKEN")
                     }
                 }
-            }
+            )
             filter { includeModule('usbr.wat.plugins', 'usbr-actionpanel-plugin') }
         }
 

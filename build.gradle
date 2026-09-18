@@ -6,7 +6,11 @@ plugins {
 }
 
 dependencies {
-    implementation libs.wtmp.actionpanel.plugin
+    implementation (libs.wtmp.actionpanel.plugin){
+		version {
+			branch = "main"
+		}
+	}
 }
 
 allprojects {
@@ -23,7 +27,7 @@ jar {
 publishing {
     publications {
         mavenJava(MavenPublication) {
-            artifactId = "usbr-simulation-report"
+            artifactId = "usbr-forecast-report"
             from components.java
         }
     }
