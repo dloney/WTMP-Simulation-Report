@@ -37,6 +37,14 @@ dependencyResolutionManagement {
             url = uri('https://www.hec.usace.army.mil/nexus/repository/maven-public')
         }
         maven {
+            name = 'GitHub Mirror'
+            url = uri('https://maven.pkg.github.com/doi-bor/WTMP-HEC-Public')
+            credentials {
+                        username = System.getenv("GITHUB_ACTOR")
+                        password = System.getenv("GITHUB_TOKEN")
+                    }
+        }
+        maven {
             url = uri('https://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/')
         }
         maven {
