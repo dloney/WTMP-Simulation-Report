@@ -34,6 +34,14 @@ dependencyResolutionManagement {
             }
         }
         maven {
+            name = 'GitHub Mirror'
+            url = uri('https://maven.pkg.github.com/doi-bor/WTMP-HEC-Internal')
+            credentials {
+                        username = System.getenv("GITHUB_ACTOR")
+                        password = System.getenv("GITHUB_TOKEN")
+                    }
+        }
+        maven {
             url = uri('https://www.hec.usace.army.mil/nexus/repository/maven-public')
         }
         maven {
@@ -48,9 +56,33 @@ dependencyResolutionManagement {
             url = uri('https://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/')
         }
         maven {
+            name = 'GitHub Mirror'
+            url = uri('https://maven.pkg.github.com/doi-bor/WTMP-Jaspersoft')
+            credentials {
+                        username = System.getenv("GITHUB_ACTOR")
+                        password = System.getenv("GITHUB_TOKEN")
+                    }
+        }
+        maven {
             /* GeoTools */
             url = uri('https://repo.osgeo.org/repository/release/')
         }
+        maven {
+            name = 'GitHub Mirror'
+            url = uri('https://maven.pkg.github.com/doi-bor/WTMP-OSGeo')
+            credentials {
+                        username = System.getenv("GITHUB_ACTOR")
+                        password = System.getenv("GITHUB_TOKEN")
+                    }
+        }
         mavenCentral()
+        maven {
+            name = 'GitHub Mirror'
+            url = uri('https://maven.pkg.github.com/doi-bor/WTMP-Maven-Central')
+            credentials {
+                        username = System.getenv("GITHUB_ACTOR")
+                        password = System.getenv("GITHUB_TOKEN")
+                    }
+        }
     }
 }
